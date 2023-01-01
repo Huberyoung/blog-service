@@ -71,6 +71,5 @@ func (r *Response) ToErrorResponse(err *errorcode.Error) {
 	if len(details) > 0 {
 		response["details"] = details
 	}
-
 	r.Ctx.JSON(err.StatusCode(), response)
 }

@@ -1,1 +1,3 @@
 2022/12/29 22:51:40 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1672325500813265000}
+2023/01/01 22:12:23 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1672582343683789000}
+2023/01/01 22:19:03 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"info","message":"eddycjy: go-programming-tour-book/blog-service","time":1672582743273457000}

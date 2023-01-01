@@ -1,6 +1,10 @@
 package v1
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"service/pkg/app"
+	"service/pkg/errorcode"
+)
 
 type Article struct{}
 
@@ -8,7 +12,9 @@ func NewArticle() Article {
 	return Article{}
 }
 
-func (a Article) Get(c *gin.Context)    {}
+func (a Article) Get(c *gin.Context) {
+	app.NewResponse(c).ToErrorResponse(errorcode.UnauthorizedTokenError)
+}
 func (a Article) List(c *gin.Context)   {}
 func (a Article) Create(c *gin.Context) {}
 func (a Article) Update(c *gin.Context) {}
