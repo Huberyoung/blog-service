@@ -1,4 +1,3 @@
-basePath: /api/v1
 definitions:
   app.Pager:
     properties:
@@ -10,6 +9,43 @@ definitions:
         type: integer
     type: object
   errorcode.Error:
+    type: object
+  model.Article:
+    properties:
+      content:
+        type: string
+      cover_image_url:
+        type: string
+      created_by:
+        type: string
+      created_on:
+        type: integer
+      delete_on:
+        type: integer
+      desc:
+        type: string
+      id:
+        type: integer
+      is_del:
+        type: integer
+      modified_by:
+        type: string
+      modified_on:
+        type: integer
+      state:
+        description: state 状态 0 为禁用、1 为启用
+        type: integer
+      title:
+        type: string
+    type: object
+  model.ArticleSwagger:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/model.Article'
+        type: array
+      paper:
+        $ref: '#/definitions/app.Pager'
     type: object
   model.Tag:
     properties:
@@ -41,7 +77,7 @@ definitions:
       paper:
         $ref: '#/definitions/app.Pager'
     type: object
-host: localhost:8080
+host: localhost:8000
 info:
   contact: {}
   description: 这只是一个测试.
@@ -49,6 +85,166 @@ info:
   title: Hubery 的博客系统
   version: "1.0"
 paths:
+  /api/v1/articles:
+    get:
+      parameters:
+      - description: 文章名称
+        in: query
+        maxLength: 100
+        name: title
+        type: string
+      - default: 1
+        description: 状态
+        enum:
+        - 0
+        - 1
+        in: query
+        name: state
+        type: integer
+      - description: 页码
+        in: query
+        name: page
+        type: integer
+      - description: 每页数量
+        in: query
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/model.ArticleSwagger'
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/errorcode.Error'
+        "500":
+          description: 内部错误
+          schema:
+            $ref: '#/definitions/errorcode.Error'
+    post:
+      parameters:
+      - description: 文章名称
+        in: body
+        maxLength: 100
+        minLength: 3
+        name: title
+        required: true
+        schema:
+          type: string
+      - description: 文章内容
+        in: body
+        maxLength: 65535
+        minLength: 100
+        name: content
+        required: true
+        schema:
+          type: string
+      - default: 1
+        description: 状态
+        enum:
+        - 0
+        - 1
+        in: body
+        name: state
+        schema:
+          type: integer
+      - description: 创建者
+        in: body
+        maxLength: 100
+        minLength: 3
+        name: created_by
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/model.ArticleSwagger'
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/errorcode.Error'
+        "500":
+          description: 内部错误
+          schema:
+            $ref: '#/definitions/errorcode.Error'
+  /api/v1/articles/{id}:
+    delete:
+      parameters:
+      - description: 文章 ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            type: string
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/errorcode.Error'
+        "500":
+          description: 内部错误
+          schema:
+            $ref: '#/definitions/errorcode.Error'
+    put:
+      parameters:
+      - description: 文章 ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: 文章名称
+        in: body
+        maxLength: 100
+        minLength: 3
+        name: title
+        required: true
+        schema:
+          type: string
+      - description: 文章内容
+        in: body
+        maxLength: 65535
+        minLength: 100
+        name: content
+        required: true
+        schema:
+          type: string
+      - description: 修改者
+        in: body
+        maxLength: 100
+        minLength: 3
+        name: modified_by
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            items:
+              $ref: '#/definitions/model.ArticleSwagger'
+            type: array
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/errorcode.Error'
+        "500":
+          description: 内部错误
+          schema:
+            $ref: '#/definitions/errorcode.Error'
   /api/v1/tags:
     get:
       parameters:

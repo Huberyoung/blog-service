@@ -31,8 +31,7 @@ func init() {
 // @version		1.0
 // @description	这只是一个测试.
 // @termsOfService	https://github.com/Huberyoung/blog-service
-// @host			localhost:8080
-// @BasePath		/api/v1
+// @host			localhost:8000
 func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
 
