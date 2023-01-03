@@ -1,5 +1,14 @@
 basePath: /api/v1
 definitions:
+  app.Pager:
+    properties:
+      page:
+        type: integer
+      page_size:
+        type: integer
+      total_rows:
+        type: integer
+    type: object
   errorcode.Error:
     type: object
   model.Tag:
@@ -22,6 +31,15 @@ definitions:
         type: string
       state:
         type: integer
+    type: object
+  model.TagSwagger:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/model.Tag'
+        type: array
+      paper:
+        $ref: '#/definitions/app.Pager'
     type: object
 host: localhost:8080
 info:
@@ -61,7 +79,7 @@ paths:
         "200":
           description: 成功
           schema:
-            $ref: '#/definitions/model.Tag'
+            $ref: '#/definitions/model.TagSwagger'
         "400":
           description: 请求错误
           schema:
@@ -103,7 +121,7 @@ paths:
         "200":
           description: 成功
           schema:
-            $ref: '#/definitions/model.Tag'
+            $ref: '#/definitions/model.TagSwagger'
         "400":
           description: 请求错误
           schema:
@@ -173,7 +191,7 @@ paths:
           description: 成功
           schema:
             items:
-              $ref: '#/definitions/model.Tag'
+              $ref: '#/definitions/model.TagSwagger'
             type: array
         "400":
           description: 请求错误
