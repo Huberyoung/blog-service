@@ -4,15 +4,7 @@
         "description": "这只是一个测试.",
         "title": "Hubery 的博客系统",
         "termsOfService": "https://github.com/Huberyoung/blog-service",
-        "contact": {
-            "name": "API Support",
-            "url": "http://www.swagger.io/support",
-            "email": "support@swagger.io"
-        },
-        "license": {
-            "name": "Apache 2.0",
-            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
-        },
+        "contact": {},
         "version": "1.0"
     },
     "host": "localhost:8080",
@@ -282,11 +274,6 @@
                     "type": "integer"
                 }
             }
-        }
-    },
-    "securityDefinitions": {
-        "BasicAuth": {
-            "type": "basic"
         }
     }
 }

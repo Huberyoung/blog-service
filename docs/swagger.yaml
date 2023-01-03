@@ -25,14 +25,8 @@ definitions:
     type: object
 host: localhost:8080
 info:
-  contact:
-    email: support@swagger.io
-    name: API Support
-    url: http://www.swagger.io/support
+  contact: {}
   description: 这只是一个测试.
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
   termsOfService: https://github.com/Huberyoung/blog-service
   title: Hubery 的博客系统
   version: "1.0"
@@ -189,7 +183,4 @@ paths:
           description: 内部错误
           schema:
             $ref: '#/definitions/errorcode.Error'
-securityDefinitions:
-  BasicAuth:
-    type: basic
 swagger: "2.0"

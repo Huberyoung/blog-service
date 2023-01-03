@@ -27,22 +27,12 @@ func init() {
 	}
 }
 
-//	@title			Hubery 的博客系统
-//	@version		1.0
-//	@description	这只是一个测试.
-//	@termsOfService	https://github.com/Huberyoung/blog-service
-
-//	@contact.name	API Support
-//	@contact.url	http://www.swagger.io/support
-//	@contact.email	support@swagger.io
-
-//	@license.name	Apache 2.0
-//	@license.url	http://www.apache.org/licenses/LICENSE-2.0.html
-
-//	@host		localhost:8080
-//	@BasePath	/api/v1
-
-// @securityDefinitions.basic	BasicAuth
+// @title			Hubery 的博客系统
+// @version		1.0
+// @description	这只是一个测试.
+// @termsOfService	https://github.com/Huberyoung/blog-service
+// @host			localhost:8080
+// @BasePath		/api/v1
 func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
 
