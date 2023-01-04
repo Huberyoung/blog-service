@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8897bf0b-10b4-49a7-91c8-9bacbf9f4c6d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/internal/middleware/translations.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/service/article.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/service/tag.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/docs/docs.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/swagger.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/swagger.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/swagger.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docs/swagger.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/routers/v1/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routers/v1/article.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routers/router.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +53,7 @@
     "WebServerToolWindowFactoryState": "false",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
-    "last_opened_file_path": "/Users/huberyyang/Documents/study/blog/service/internal/model",
+    "last_opened_file_path": "/Users/huberyyang/Documents/study/blog/service/internal/service",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -68,6 +67,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/internal/service" />
       <recent name="$PROJECT_DIR$/internal/model" />
       <recent name="$PROJECT_DIR$/internal/routers/v1" />
     </key>

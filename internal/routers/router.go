@@ -5,12 +5,13 @@ import (
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	_ "service/docs"
+	"service/internal/middleware"
 	v1 "service/internal/routers/v1"
 )
 
 func NewRouter() *gin.Engine {
 	r := gin.New()
-	r.Use(gin.Logger(), gin.Recovery())
+	r.Use(gin.Logger(), gin.Recovery(), middleware.Translation())
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	article := v1.NewArticle()
