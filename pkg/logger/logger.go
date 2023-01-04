@@ -148,14 +148,14 @@ func (l *Logger) Fatal(v ...any) {
 	l.Output(LevelFatal, fmt.Sprint(v...))
 }
 
-func (l *Logger) fatalF(format string, v ...any) {
+func (l *Logger) FatalF(format string, v ...any) {
 	l.Output(LevelFatal, fmt.Sprintf(format, v...))
 }
 
-func (l *Logger) panic(v ...any) {
+func (l *Logger) Panic(v ...any) {
 	l.Output(LevelPanic, fmt.Sprint(v...))
 }
 
-func (l *Logger) panicF(format string, v ...any) {
+func (l *Logger) PanicF(format string, v ...any) {
 	l.Output(LevelPanic, fmt.Sprintf(format, v...))
 }

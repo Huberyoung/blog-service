@@ -2,6 +2,10 @@ package v1
 
 import (
 	"github.com/gin-gonic/gin"
+	"service/global"
+	"service/internal/service"
+	"service/pkg/app"
+	"service/pkg/errorcode"
 )
 
 type Tag struct{}
@@ -20,7 +24,20 @@ func NewTag() Tag {
 // @Failure 400 {object} errorcode.Error "请求错误"
 // @Failure 500 {object} errorcode.Error "内部错误"
 // @Router /api/v1/tags [get]
-func (t Tag) List(c *gin.Context) {}
+func (t Tag) List(c *gin.Context) {
+	var para service.CountArticleRequest
+
+	response := app.NewResponse(c)
+	valid, errors := app.BindAndValid(c, &para)
+	if !valid {
+		global.Logger.FatalF("app.BindAndValid:%v", errors)
+		response.ToErrorResponse(errorcode.InvalidParams.WithDetails(errors.Errors()...))
+		return
+	}
+
+	response.ToResponse(gin.H{})
+	return
+}
 
 // Create @Summary 新增标签
 // @Produce  json
