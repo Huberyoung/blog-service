@@ -54,9 +54,12 @@ func (e *Error) MsgF(args []any) string {
 func (e *Error) WithDetails(details ...string) *Error {
 	NewErr := *e
 	NewErr.details = []string{}
-	for _, detail := range details {
-		NewErr.details = append(NewErr.details, detail)
-	}
+	//for _, detail := range details {
+	//	NewErr.details = append(NewErr.details, detail)
+	//}
+	//
+	// 想一下，上面的部分是否可以改成
+	NewErr.details = append(NewErr.details, details...)
 	return &NewErr
 }
 
