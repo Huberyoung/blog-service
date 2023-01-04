@@ -6,3 +6,4 @@
 2023/01/04 20:50:57 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"info","message":"app.BindAndValid:State必须是[0 1]中的一个","time":1672836657006049000}
 2023/01/04 20:56:32 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"info","message":"app.BindAndValid:State必须是[0 1]中的一个","time":1672836992387060000}
 2023/01/04 20:56:39 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"info","message":"app.BindAndValid:State必须是[0 1]中的一个","time":1672836999303407000}
+2023/01/04 21:00:23 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"info","message":"app.BindAndValid:State必须是[0 1]中的一个","time":1672837223369392000}
