@@ -28,8 +28,7 @@ func (t Tag) List(c *gin.Context) {
 	var para service.CountArticleRequest
 
 	response := app.NewResponse(c)
-	valid, errors := app.BindAndValid(c, &para)
-	if !valid {
+	if valid, errors := app.BindAndValid(c, &para); !valid {
 		global.Logger.InfoF("app.BindAndValid:%v", errors)
 		response.ToErrorResponse(errorcode.InvalidParams.WithDetails(errors.Errors()...))
 		return
