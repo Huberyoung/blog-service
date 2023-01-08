@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8897bf0b-10b4-49a7-91c8-9bacbf9f4c6d" name="Changes" comment="生成接口文档">
-      <change afterPath="$PROJECT_DIR$/internal/dao/article.go" afterDir="false" />
+    <list default="true" id="8897bf0b-10b4-49a7-91c8-9bacbf9f4c6d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/model/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/article.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/routers/v1/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routers/v1/article.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/service/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/service/article.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/errorcode/module_code.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/errorcode/module_code.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/app.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +31,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MigrationScriptOptions">
+    <option name="ignoreImplicitObjects" value="true" />
+    <option name="ignoreSourceCode" value="false" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
   </component>
@@ -45,12 +48,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "DefaultGoTemplateProperty": "Go File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
     "RunOnceActivity.go.migrated.go.modules.settings": "true",
     "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "go.import.settings.migrated": "true",
     "go.sdk.automatically.set": "true",
@@ -62,7 +67,8 @@
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
-      "redshift"
+      "redshift",
+      "mysql"
     ]
   }
 }]]></component>
@@ -101,7 +107,8 @@
     <MESSAGE value="fetch:提交" />
     <MESSAGE value="first commit" />
     <MESSAGE value="生成接口文档" />
-    <option name="LAST_COMMIT_MESSAGE" value="生成接口文档" />
+    <MESSAGE value="文章的接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="文章的接口" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
