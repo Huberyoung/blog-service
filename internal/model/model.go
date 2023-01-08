@@ -17,7 +17,7 @@ type Model struct {
 	ModifiedBy string `json:"modified_by"`
 	CreatedOn  uint32 `json:"created_on"`
 	ModifiedOn uint32 `json:"modified_on"`
-	DeleteOn   uint32 `json:"delete_on"`
+	DeletedOn  uint32 `json:"deleted_on"`
 	IsDel      uint8  `json:"is_del"`
 }
 
@@ -91,6 +91,9 @@ func NewDbEngine(d *setting.DatabaseSettingS) (*gorm.DB, error) {
 	}
 
 	db.SingularTable(true)
+	db.Callback().Create().Replace("gorm:update_time_stamp", updateTimeStampForCreateCallback)
+	db.Callback().Update().Replace("gorm:update_time_stamp", updateTimeStampForUpdateCallback)
+	db.Callback().Delete().Replace("gorm:delete", deleteCallBack)
 	db.DB().SetMaxIdleConns(d.MaxIdleConnections)
 	db.DB().SetMaxOpenConns(d.MaxOpenConnections)
 	return db, nil
@@ -126,11 +129,11 @@ func deleteCallBack(scope *gorm.Scope) {
 			extraOption = fmt.Sprint(str)
 		}
 
-		deletedOnField, hasDeletedOnField := scope.FieldByName("DeleteOn")
+		deletedOnField, hasDeletedOnField := scope.FieldByName("DeletedOn")
 		isDelField, hasIsDelField := scope.FieldByName("IsDel")
 		if !scope.Search.Unscoped && hasDeletedOnField && hasIsDelField {
 			now := time.Now().Unix()
-			scope.Raw(fmt.Sprintf("UPDATE %v SET %v=%v,%v=%v %v%v",
+			scope.Raw(fmt.Sprintf("UPDATE %v SET %v=%v,%v=%v%v%v",
 				scope.QuotedTableName(),
 				scope.Quote(deletedOnField.DBName),
 				scope.AddToVars(now),
@@ -139,10 +142,8 @@ func deleteCallBack(scope *gorm.Scope) {
 				addExtraSpaceIfExist(scope.CombinedConditionSql()),
 				addExtraSpaceIfExist(extraOption),
 			)).Exec()
-
 		} else {
-			scope.Raw(fmt.Sprintf(
-				"DELETE FROM %v%v %v",
+			scope.Raw(fmt.Sprintf("DELETE FROM %v%v%v",
 				scope.QuotedTableName(),
 				addExtraSpaceIfExist(scope.CombinedConditionSql()),
 				addExtraSpaceIfExist(extraOption),

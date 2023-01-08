@@ -7,3 +7,8 @@
 2023/01/04 20:56:32 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"info","message":"app.BindAndValid:State必须是[0 1]中的一个","time":1672836992387060000}
 2023/01/04 20:56:39 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"info","message":"app.BindAndValid:State必须是[0 1]中的一个","time":1672836999303407000}
 2023/01/04 21:00:23 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"info","message":"app.BindAndValid:State必须是[0 1]中的一个","time":1672837223369392000}
+2023/01/08 14:33:49 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"error","message":"srv.CreateTag errs:","time":1673159629651440000}
+2023/01/08 14:33:57 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"error","message":"srv.CreateTag errs:","time":1673159637761230000}
+2023/01/08 14:34:12 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"error","message":"srv.CreateTag errs:","time":1673159652505634000}
+2023/01/08 14:34:42 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"error","message":"srv.CreateTag errs:","time":1673159682577365000}
+2023/01/08 14:36:29 {"callers":["/Users/huberyyang/Documents/study/blog/service/main.go : 25 main.init.0"],"level":"error","message":"srv.CreateTag errs:","time":1673159789874094000}
