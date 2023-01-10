@@ -12,4 +12,5 @@ var (
 	ErrorUpdateArticleFail  = NewError(20010013, "更新标签失败")
 	ErrorDeleteArticleFail  = NewError(20010014, "删除标签失败")
 	ErrorCountArticleFail   = NewError(20010015, "统计标签失败")
+	ErrorUploadFileFail     = NewError(20030001, "上传文件失败")
 )
