@@ -1,4 +1,4 @@
-package v1
+package api
 
 import (
 	"github.com/gin-gonic/gin"
@@ -24,7 +24,7 @@ func NewTag() Tag {
 // @Success 200 {object} model.TagSwagger "成功"
 // @Failure 400 {object} errorcode.Error "请求错误"
 // @Failure 500 {object} errorcode.Error "内部错误"
-// @Router /api/v1/tags [get]
+// @Router /api/api/tags [get]
 func (t Tag) List(c *gin.Context) {
 	param := service.TagListRequest{}
 	response := app.NewResponse(c)
@@ -63,7 +63,7 @@ func (t Tag) List(c *gin.Context) {
 // @Success 200 {object} model.TagSwagger"成功"
 // @Failure 400 {object} errorcode.Error "请求错误"
 // @Failure 500 {object} errorcode.Error "内部错误"
-// @Router /api/v1/tags [post]
+// @Router /api/api/tags [post]
 func (t Tag) Create(c *gin.Context) {
 	param := service.CreateTagRequest{}
 	response := app.NewResponse(c)
@@ -94,7 +94,7 @@ func (t Tag) Create(c *gin.Context) {
 // @Success 200 {array} model.TagSwagger"成功"
 // @Failure 400 {object} errorcode.Error "请求错误"
 // @Failure 500 {object} errorcode.Error "内部错误"
-// @Router /api/v1/tags/{id} [put]
+// @Router /api/api/tags/{id} [put]
 func (t Tag) Update(c *gin.Context) {
 	param := service.UpdateTagRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
 	response := app.NewResponse(c)
@@ -122,7 +122,7 @@ func (t Tag) Update(c *gin.Context) {
 // @Success 200 {string} string "成功"
 // @Failure 400 {object} errorcode.Error "请求错误"
 // @Failure 500 {object} errorcode.Error "内部错误"
-// @Router /api/v1/tags/{id} [delete]
+// @Router /api/api/tags/{id} [delete]
 func (t Tag) Delete(c *gin.Context) {
 	param := service.DeleteTagRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
 	response := app.NewResponse(c)

@@ -1,4 +1,4 @@
-package v1
+package api
 
 import (
 	"github.com/gin-gonic/gin"
@@ -23,7 +23,7 @@ func NewArticle() Article {
 // @Success 200 {object} model.ArticleSwagger "成功"
 // @Failure 400 {object} errorcode.Error "请求错误"
 // @Failure 500 {object} errorcode.Error "内部错误"
-// @Router /api/v1/articles [get]
+// @Router /api/api/articles [get]
 func (a Article) Get(c *gin.Context) {
 	param := service.ArticleGetRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
 	response := app.NewResponse(c)
@@ -54,7 +54,7 @@ func (a Article) Get(c *gin.Context) {
 // @Success 200 {object} model.ArticleSwagger "成功"
 // @Failure 400 {object} errorcode.Error "请求错误"
 // @Failure 500 {object} errorcode.Error "内部错误"
-// @Router /api/v1/articles [get]
+// @Router /api/api/articles [get]
 func (a Article) List(c *gin.Context) {
 	param := service.ArticleListRequest{}
 	response := app.NewResponse(c)
@@ -95,7 +95,7 @@ func (a Article) List(c *gin.Context) {
 // @Success 200 {object} model.ArticleSwagger"成功"
 // @Failure 400 {object} errorcode.Error "请求错误"
 // @Failure 500 {object} errorcode.Error "内部错误"
-// @Router /api/v1/articles [post]
+// @Router /api/api/articles [post]
 func (a Article) Create(c *gin.Context) {
 	param := service.CreateArticleRequest{}
 	response := app.NewResponse(c)
@@ -126,7 +126,7 @@ func (a Article) Create(c *gin.Context) {
 // @Success 200 {array} model.ArticleSwagger"成功"
 // @Failure 400 {object} errorcode.Error "请求错误"
 // @Failure 500 {object} errorcode.Error "内部错误"
-// @Router /api/v1/articles/{id} [put]
+// @Router /api/api/articles/{id} [put]
 func (a Article) Update(c *gin.Context) {
 	param := service.UpdateArticleRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
 	response := app.NewResponse(c)
@@ -153,7 +153,7 @@ func (a Article) Update(c *gin.Context) {
 // @Success 200 {string} string "成功"
 // @Failure 400 {object} errorcode.Error "请求错误"
 // @Failure 500 {object} errorcode.Error "内部错误"
-// @Router /api/v1/articles/{id} [delete]
+// @Router /api/api/articles/{id} [delete]
 func (a Article) Delete(c *gin.Context) {
 	param := service.DeleteArticleRequest{ID: convert.StrTo(c.Param("id")).MustUInt32()}
 	response := app.NewResponse(c)

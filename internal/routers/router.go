@@ -8,22 +8,24 @@ import (
 	_ "service/docs"
 	"service/global"
 	"service/internal/middleware"
-	v1 "service/internal/routers/v1"
+	"service/internal/routers/api"
 )
 
 func NewRouter() *gin.Engine {
 	r := gin.New()
-	r.Use(gin.Logger(), gin.Recovery(), middleware.Translation())
+	r.Use(gin.Logger(), gin.Recovery(), middleware.Translation(), middleware.JWT())
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	upload := NewUpload()
 	r.POST("/upload/file", upload.UploadFile)
 	r.StaticFS("/static", http.Dir(global.AppSetting.UploadSavePath))
 
-	article := v1.NewArticle()
-	tag := v1.NewTag()
+	r.GET("/auth", api.GetAuth)
 
-	group := r.Group("/api/v1")
+	article := api.NewArticle()
+	tag := api.NewTag()
+
+	group := r.Group("/api/api")
 	{
 		group.POST("/tags", tag.Create)
 		group.DELETE("/tags/:id", tag.Delete)

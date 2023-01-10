@@ -29,3 +29,8 @@ Database:
   ParseTime: true
   MaxIdleConnections: 10
   MaxOpenConnections: 30
+
+JWT:
+  Secret: hubery
+  Issuer: blog-service
+  Expire: 7200

@@ -17,7 +17,7 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/api/v1/articles": {
+        "/api/api/articles": {
             "get": {
                 "produces": [
                     "application/json"
@@ -149,7 +149,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/articles/{id}": {
+        "/api/api/articles/{id}": {
             "put": {
                 "produces": [
                     "application/json"
@@ -255,7 +255,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/tags": {
+        "/api/api/tags": {
             "get": {
                 "produces": [
                     "application/json"
@@ -376,7 +376,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/api/v1/tags/{id}": {
+        "/api/api/tags/{id}": {
             "put": {
                 "produces": [
                     "application/json"

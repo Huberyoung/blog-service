@@ -5,6 +5,19 @@ import (
 	"service/pkg/app"
 )
 
+type Article struct {
+	*Model
+	Title         string `json:"title"`
+	Desc          string `json:"desc"`
+	Content       string `json:"content"`
+	CoverImageUrl string `json:"cover_image_url"`
+	State         uint8  `json:"state"` // state 状态 0 为禁用、1 为启用
+}
+
+func (a Article) TableName() string {
+	return "blog_article"
+}
+
 type ArticleSwagger struct {
 	List  []*Article
 	Paper *app.Pager

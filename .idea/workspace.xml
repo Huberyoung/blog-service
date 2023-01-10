@@ -4,9 +4,30 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8897bf0b-10b4-49a7-91c8-9bacbf9f4c6d" name="Changes" comment="">
+    <list default="true" id="8897bf0b-10b4-49a7-91c8-9bacbf9f4c6d" name="Changes" comment="测试的接口">
+      <change afterPath="$PROJECT_DIR$/internal/dao/auth.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/middleware/jwt.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/model/auth.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/routers/api/auth.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/service/auth.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/app/jwt.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c29f3b1b-c026-4154-b939-a0f0fa5b7446.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c29f3b1b-c026-4154-b939-a0f0fa5b7446.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/docs.go" beforeDir="false" afterPath="$PROJECT_DIR$/docs/docs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global/setting.go" beforeDir="false" afterPath="$PROJECT_DIR$/global/setting.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/dao/mysql/database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/internal/dao/mysql/database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/model/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/article.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/model/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/model.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/model/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/model/tag.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/internal/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routers/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/routers/v1/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routers/api/article.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/routers/v1/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/routers/api/tag.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/setting/section.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/setting/section.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
