@@ -1,28 +1,31 @@
 package main
 
 import (
-	"blog-service/global"
-	"blog-service/interbal/routers"
-	"blog-service/pkg/setting"
 	"fmt"
 	"log"
 	"net/http"
 	"time"
+
+	"blog-service/global"
+	"blog-service/interbal/model"
+	"blog-service/interbal/routers"
+	"blog-service/pkg/setting"
+
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 func init() {
 	if err := setUpSetting(); err != nil {
 		log.Fatalf("init.setUpSetting err:%v\n", err)
 	}
+
+	if err := setUpDBEngine(); err != nil {
+		log.Fatalf("init.setUpDBEngine err:%v\n", err)
+	}
 }
 
 func main() {
 	route := routers.NewRouter()
-
-	fmt.Printf("ServerSetting:%v\n", global.ServerSetting)
-	fmt.Printf("AppSetting:%v\n", global.AppSetting)
-	fmt.Printf("DataBaseSetting:%v\n", global.DataBaseSetting)
-
 	s := &http.Server{
 		Addr:              ":" + global.ServerSetting.HttpPort,
 		Handler:           route,
@@ -58,4 +61,10 @@ func setUpSetting() error {
 	global.ServerSetting.WriteTimeout *= time.Second
 	global.ServerSetting.MaxHeaderBytes = 1 << global.ServerSetting.MaxHeaderBytes
 	return nil
+}
+
+func setUpDBEngine() error {
+	var err error
+	global.DBEngine, err = model.NewDbEngine(global.DataBaseSetting)
+	return err
 }

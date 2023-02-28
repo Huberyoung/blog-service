@@ -23,9 +23,10 @@ type DatabaseS struct {
 	Username          string
 	Password          string
 	Host              string
+	DBName            string
 	TablePrefix       string
 	Charset           string
 	ParseTime         bool
-	MaxIdleConnection uint
-	MaxOpenConnection uint
+	MaxIdleConnection int
+	MaxOpenConnection int
 }
