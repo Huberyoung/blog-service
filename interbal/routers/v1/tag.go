@@ -1,7 +1,10 @@
 package v1
 
 import (
+	"blog-service/global"
+	"blog-service/interbal/model"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 )
 
@@ -13,9 +16,11 @@ func NewTage() Tag {
 }
 
 func (t Tag) Get(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{
-		"title": "这就是测试啊",
-	})
+	var tag model.Tag
+	global.DBEngine.First(&tag)
+	log.Printf("record %#v\n", tag)
+
+	c.JSON(http.StatusOK, tag)
 }
 
 func (t Tag) List(c *gin.Context) {
