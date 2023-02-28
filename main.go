@@ -28,7 +28,7 @@ func main() {
 		Handler:           route,
 		ReadHeaderTimeout: global.ServerSetting.ReadTimeout,
 		WriteTimeout:      global.ServerSetting.WriteTimeout,
-		MaxHeaderBytes:    1 << 20,
+		MaxHeaderBytes:    global.ServerSetting.MaxHeaderBytes,
 	}
 	err := s.ListenAndServe()
 	fmt.Printf("err:%s\n", err.Error())
@@ -56,5 +56,6 @@ func setUpSetting() error {
 	}
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
+	global.ServerSetting.MaxHeaderBytes = 1 << global.ServerSetting.MaxHeaderBytes
 	return nil
 }

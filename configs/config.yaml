@@ -3,6 +3,7 @@ Server:
   HttpPort: 8080
   ReadTimeout: 60
   WriteTimeout: 60
+  MaxHeaderBytes: 20
 App:
   DefaultPageSize: 10
   MaxPageSize: 100
