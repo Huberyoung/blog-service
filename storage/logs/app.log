@@ -1,0 +1,8 @@
+2023/03/01 21:33:06 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"info","message":"这就是一个测试","time":1677677586291858000}
+2023/03/01 21:33:06 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"info","message":"这就是[7]个测试","time":1677677586292866000}
+2023/03/01 21:36:21 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"info","message":"这就是一个测试","time":1677677781718718000,"timeStr":"2023-03-01 21:36:21"}
+2023/03/01 21:36:21 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"info","message":"这就是[7]个测试","time":1677677781719145000,"timeStr":"2023-03-01 21:36:21"}
+2023/03/01 21:36:36 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"info","message":"这就是一个测试","time":1677677796846378000,"timeStr":"2023-03-01 21:36:36"}
+2023/03/01 21:36:36 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"info","message":"这就是[7]个测试","time":1677677796846793000,"timeStr":"2023-03-01 21:36:36"}
+2023/03/01 21:38:00 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"info","message":"这就是一个测试","time":1677677880777946000,"timeStr":"2023-03-01 21:38:00"}
+2023/03/01 21:38:00 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"info","message":"这就是[7]个测试","time":1677677880778136000,"timeStr":"2023-03-01 21:38:00"}

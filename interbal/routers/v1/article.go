@@ -1,9 +1,9 @@
 package v1
 
 import (
-	"blog-service/global"
+	"blog-service/pkg/app"
+	"blog-service/pkg/errcode"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 type Article struct {
@@ -14,10 +14,8 @@ func NewArticle() Article {
 }
 
 func (a Article) Get(c *gin.Context) {
-	global.Logger.Info("这就是一个测试")
-	global.Logger.InfoF("这就是[%d]个测试", 7)
-
-	c.JSON(http.StatusOK, gin.H{"title": "测试"})
+	app.NewResponse(c).ToResponse(map[string]string{"title": "这里"})
+	app.NewResponse(c).ToErrorResponseList(errcode.ServerError)
 }
 
 func (a Article) List(c *gin.Context) {
