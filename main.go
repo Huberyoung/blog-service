@@ -77,7 +77,7 @@ func setUpDBEngine() error {
 
 func setUpLogger() error {
 	writer := &lumberjack.Logger{
-		Filename:   global.AppSetting.LogSavePath + "/" + global.AppSetting.LogFileName + "/" + global.AppSetting.LogFileExt,
+		Filename:   global.AppSetting.LogSavePath + "/" + global.AppSetting.LogFileName + global.AppSetting.LogFileExt,
 		MaxSize:    global.AppSetting.LogMaxSize,
 		MaxAge:     global.AppSetting.LogMaxAge,
 		MaxBackups: global.AppSetting.LogMaxBackups,
