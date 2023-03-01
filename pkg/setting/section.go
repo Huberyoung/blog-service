@@ -11,8 +11,8 @@ type ServerS struct {
 }
 
 type AppS struct {
-	DefaultPageSize uint
-	MaxPageSize     uint
+	DefaultPageSize int
+	MaxPageSize     int
 	LogSavePath     string
 	LogFileName     string
 	LogFileExt      string
