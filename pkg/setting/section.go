@@ -16,6 +16,11 @@ type AppS struct {
 	LogSavePath     string
 	LogFileName     string
 	LogFileExt      string
+	LogMaxSize      int
+	LogMaxAge       int
+	LogMaxBackups   int
+	LogUseLocalTime bool
+	LogCompress     bool
 }
 
 type DatabaseS struct {

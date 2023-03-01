@@ -10,6 +10,11 @@ App:
   LogSavePath: storage/logs
   LogFileName: app
   LogFileExt: .log
+  LogMaxSize: 600 # megabytes
+  LogMaxAge: 10 #days
+  LogMaxBackups: 1
+  LogUseLocalTime: true
+  LogCompress: false
 Database:
   DBType: mysql
   Username: root

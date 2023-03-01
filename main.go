@@ -1,7 +1,9 @@
 package main
 
 import (
+	"blog-service/pkg/logger"
 	"fmt"
+	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
 	"net/http"
 	"time"
@@ -21,6 +23,10 @@ func init() {
 
 	if err := setUpDBEngine(); err != nil {
 		log.Fatalf("init.setUpDBEngine err:%v\n", err)
+	}
+
+	if err := setUpLogger(); err != nil {
+		log.Fatalf("init.setUpLogger err:%v\n", err)
 	}
 }
 
@@ -67,4 +73,17 @@ func setUpDBEngine() error {
 	var err error
 	global.DBEngine, err = model.NewDbEngine(global.DataBaseSetting)
 	return err
+}
+
+func setUpLogger() error {
+	writer := &lumberjack.Logger{
+		Filename:   global.AppSetting.LogSavePath + "/" + global.AppSetting.LogFileName + "/" + global.AppSetting.LogFileExt,
+		MaxSize:    global.AppSetting.LogMaxSize,
+		MaxAge:     global.AppSetting.LogMaxAge,
+		MaxBackups: global.AppSetting.LogMaxBackups,
+		LocalTime:  global.AppSetting.LogUseLocalTime,
+		Compress:   global.AppSetting.LogCompress,
+	}
+	global.Logger = logger.NewLogger(writer, "", log.LstdFlags).CloneWithCaller(2)
+	return nil
 }
