@@ -1,12 +1,17 @@
 package routers
 
 import (
+	_ "blog-service/docs"
 	v1 "blog-service/interbal/routers/v1"
+
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func NewRouter() *gin.Engine {
 	r := gin.Default()
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	tag := v1.NewTage()
 	article := v1.NewArticle()
@@ -17,7 +22,8 @@ func NewRouter() *gin.Engine {
 		apiV1.DELETE("/tags/:id", tag.Delete)
 		apiV1.PUT("/tags/:id", tag.Update)
 		apiV1.PATCH("/tags/:id/state", tag.Update)
-		apiV1.GET("/tags", tag.Get)
+		apiV1.GET("/tags/:id", tag.Get)
+		apiV1.GET("/tags", tag.List)
 
 		apiV1.POST("/articles", article.Create)
 		apiV1.DELETE("/articles/:id", article.Delete)

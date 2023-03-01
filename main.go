@@ -30,6 +30,14 @@ func init() {
 	}
 }
 
+//	@title			GO博客系统
+//	@version		1.0
+//	@description	练手项目，博客系统
+//	@termsOfService	http://swagger.io/terms/
+
+// @contact.name	API Support
+// @contact.url	http://www.swagger.io/support
+// @contact.email	support@swagger.io
 func main() {
 	route := routers.NewRouter()
 	s := &http.Server{
