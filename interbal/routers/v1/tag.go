@@ -5,6 +5,7 @@ import (
 	"blog-service/interbal/model"
 	"blog-service/interbal/service"
 	"blog-service/pkg/app"
+	"blog-service/pkg/convert"
 	"blog-service/pkg/errcode"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -54,16 +55,32 @@ func (t Tag) Get(c *gin.Context) {
 //	@Failure		500			{object}	errcode.Error	"内部错误"
 //	@Router			/api/v1/tags [get]
 func (t Tag) List(c *gin.Context) {
-	response := app.NewResponse(c)
+	param := service.TagListRequest{}
 
-	param := service.CountTagRequest{}
-	valid, errs := app.BindAndValid(c, &param)
+	response := app.NewResponse(c)
+	valid, errors := app.BindAndValid(c, &param)
 	if !valid {
-		global.Logger.ErrorF("app.BindAndValid errs:%v", errs)
-		response.ToErrorResponseList(errcode.InvalidParams.WithDetails(errs.Errors()...))
+		global.Logger.ErrorF("app.BindAndValid errs:%v", errors)
+		response.ToErrorResponseList(errcode.InvalidParams.WithDetails(errors.Errors()...))
 		return
 	}
-	response.ToResponse(gin.H{"code": 1000})
+
+	svc := service.New(c.Request.Context())
+	pager := app.Pager{Page: app.GetPage(c), PageSize: app.GetPageSize(c)}
+	totalRows, err := svc.CountTag(&service.CountTagRequest{Name: param.Name, State: param.State})
+	if err != nil {
+		global.Logger.ErrorF("svc.CountTag err:%v", err)
+		response.ToErrorResponseList(errcode.ErrorCountTagListFail)
+		return
+	}
+
+	tags, err := svc.ListTag(&param, &pager)
+	if err != nil {
+		global.Logger.ErrorF("svc.ListTag err:%v", err)
+		response.ToErrorResponseList(errcode.ErrorGetTagListFail)
+		return
+	}
+	response.ToResponseList(tags, totalRows)
 	return
 }
 
@@ -82,7 +99,26 @@ func (t Tag) List(c *gin.Context) {
 //	@Failure		500			{object}	errcode.Error	"内部错误"
 //	@Router			/api/v1/tags [post]
 func (t Tag) Create(c *gin.Context) {
+	param := service.CreateTagRequest{}
 
+	response := app.NewResponse(c)
+	valid, errors := app.BindAndValid(c, &param)
+	if !valid {
+		global.Logger.ErrorF("app.BindAndValid errs:%s", errors.Error())
+		response.ToErrorResponseList(errcode.InvalidParams.WithDetails(errors.Errors()...))
+		return
+	}
+
+	svc := service.New(c.Request.Context())
+	err := svc.CreateTag(&param)
+	if err != nil {
+		global.Logger.ErrorF("app.CreateTag errs:%v", errors)
+		response.ToErrorResponseList(errcode.ErrorCreateTagFail)
+		return
+	}
+
+	response.ToResponse(gin.H{})
+	return
 }
 
 // Update godoc
@@ -101,7 +137,26 @@ func (t Tag) Create(c *gin.Context) {
 //	@Failure		500			{object}	errcode.Error	"内部错误"
 //	@Router			/api/v1/tags/:id [put]
 func (t Tag) Update(c *gin.Context) {
+	param := service.UpdateTagRequest{Id: convert.StrTo(c.Param("id")).MustUInt()}
 
+	response := app.NewResponse(c)
+	valid, errors := app.BindAndValid(c, &param)
+	if !valid {
+		global.Logger.ErrorF("app.BindAndValid errs:%s", errors.Errors())
+		response.ToErrorResponseList(errcode.InvalidParams.WithDetails(errors.Errors()...))
+		return
+	}
+
+	svc := service.New(c.Request.Context())
+	err := svc.UpdateTag(&param)
+	if err != nil {
+		global.Logger.ErrorF("app.UpdateTag errs:%v", errors)
+		response.ToErrorResponseList(errcode.ErrorUpdateTagFail)
+		return
+	}
+
+	response.ToResponse(gin.H{})
+	return
 }
 
 // Delete godoc
@@ -117,5 +172,22 @@ func (t Tag) Update(c *gin.Context) {
 //	@Failure		500	{object}	errcode.Error	"内部错误"
 //	@Router			/api/v1/tags/:id [delete]
 func (t Tag) Delete(c *gin.Context) {
+	param := service.DeleteTagRequest{Id: convert.StrTo(c.Param("id")).MustUInt()}
+	response := app.NewResponse(c)
+	valid, errors := app.BindAndValid(c, &param)
+	if !valid {
+		global.Logger.ErrorF("app.BindAndValid errs:%s", errors.Errors())
+		response.ToErrorResponseList(errcode.InvalidParams.WithDetails(errors.Errors()...))
+		return
+	}
 
+	svc := service.New(c.Request.Context())
+	err := svc.DeleteTag(&param)
+	if err != nil {
+		global.Logger.ErrorF("app.DeleteTag errs:%v", errors)
+		response.ToErrorResponseList(errcode.ErrorDeleteTagFail)
+		return
+	}
+	response.ToResponse(gin.H{})
+	return
 }

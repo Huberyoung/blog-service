@@ -26,3 +26,13 @@ func (s StrTo) MustUInt32() uint32 {
 	v, _ := strconv.Atoi(s.String())
 	return uint32(v)
 }
+
+func (s StrTo) UInt() (uint, error) {
+	v, err := strconv.Atoi(s.String())
+	return uint(v), err
+}
+
+func (s StrTo) MustUInt() uint {
+	v, _ := strconv.Atoi(s.String())
+	return uint(v)
+}

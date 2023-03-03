@@ -22,9 +22,9 @@ type CreateTagRequest struct {
 }
 
 type UpdateTagRequest struct {
-	Id         uint   `form:"id" binding:"required, gte=1"`
-	Name       string `form:"name" binding:"min=3,max=100"`
-	State      uint8  `form:"state" binding:"required,oneof=0 1"`
+	Id         uint   `form:"id" binding:"required,gte=1"`
+	Name       string `form:"name" binding:"max=100"`
+	State      uint8  `form:"state" binding:"oneof=0 1"`
 	ModifiedBy string `form:"modified_by" binding:"required,min=3,max=100"`
 }
 
@@ -36,7 +36,7 @@ func (srv *Service) CountTag(request *CountTagRequest) (int, error) {
 	return srv.dao.CountTag(request.Name, request.State)
 }
 
-func (srv *Service) ListTag(request *TagListRequest, pager app.Pager) ([]*model.Tag, error) {
+func (srv *Service) ListTag(request *TagListRequest, pager *app.Pager) ([]*model.Tag, error) {
 	return srv.dao.GetTagList(request.Name, request.State, pager.Page, pager.PageSize)
 }
 
