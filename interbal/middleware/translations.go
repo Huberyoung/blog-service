@@ -7,8 +7,9 @@ import (
 	"github.com/go-playground/locales/en"
 	"github.com/go-playground/locales/zh"
 	"github.com/go-playground/locales/zh_Hant_TW"
-	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
+
+	"github.com/go-playground/universal-translator"
 	entranslations "github.com/go-playground/validator/v10/translations/en"
 	zhtranslations "github.com/go-playground/validator/v10/translations/zh"
 	zhtwtranslations "github.com/go-playground/validator/v10/translations/zh_tw"
@@ -35,6 +36,7 @@ func Translations() gin.HandlerFunc {
 			if err != nil {
 				global.Logger.WarningF("语言包转换错误:%s\n", err.Error())
 			}
+			c.Set("trans", trans)
 		}
 		c.Next()
 	}

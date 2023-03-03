@@ -3,6 +3,9 @@ package v1
 import (
 	"blog-service/global"
 	"blog-service/interbal/model"
+	"blog-service/interbal/service"
+	"blog-service/pkg/app"
+	"blog-service/pkg/errcode"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -51,7 +54,17 @@ func (t Tag) Get(c *gin.Context) {
 //	@Failure		500			{object}	errcode.Error	"内部错误"
 //	@Router			/api/v1/tags [get]
 func (t Tag) List(c *gin.Context) {
+	response := app.NewResponse(c)
 
+	param := service.CountTagRequest{}
+	valid, errs := app.BindAndValid(c, &param)
+	if !valid {
+		global.Logger.ErrorF("app.BindAndValid errs:%v", errs)
+		response.ToErrorResponseList(errcode.InvalidParams.WithDetails(errs.Errors()...))
+		return
+	}
+	response.ToResponse(gin.H{"code": 1000})
+	return
 }
 
 // Create godoc
