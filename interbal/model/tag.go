@@ -5,7 +5,7 @@ import (
 )
 
 type Tag struct {
-	*Model
+	Model *Model
 	Name  string `json:"name"`
 	State uint8  `json:"state"`
 }
@@ -26,7 +26,7 @@ func (t Tag) Count(db *gorm.DB) (int, error) {
 	return count, nil
 }
 
-func (t Tag) list(db *gorm.DB, pageOffset, pageSize int) ([]*Tag, error) {
+func (t Tag) List(db *gorm.DB, pageOffset, pageSize int) ([]*Tag, error) {
 	var tags []*Tag
 	var err error
 	if pageOffset >= 0 && pageSize > 0 {
@@ -48,9 +48,9 @@ func (t Tag) Create(db *gorm.DB) error {
 }
 
 func (t Tag) Update(db *gorm.DB) error {
-	return db.Model(&Tag{}).Where("id = ? and is_del = ?", t.ID, 0).Update(t).Error
+	return db.Model(&Tag{}).Where("id = ? and is_del = ?", t.Model.ID, 0).Update(t).Error
 }
 
 func (t Tag) Delete(db *gorm.DB) error {
-	return db.Where("id = ? and is_del = ?", t.ID, 0).Delete(&t).Error
+	return db.Where("id = ? and is_del = ?", t.Model.ID, 0).Delete(&t).Error
 }
