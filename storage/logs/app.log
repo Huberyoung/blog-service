@@ -11,3 +11,4 @@
 2023/03/02 22:59:14 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid errs:Key: 'CountTagRequest.State' Error:Field validation for 'State' failed on the 'oneof' tag","time":1677769154335637000}
 2023/03/02 23:05:28 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid errs:State必须是[0 1]中的一个","time":1677769528014159000}
 2023/03/02 23:06:12 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid errs:Name长度必须至少为3个字符,State必须是[0 1]中的一个","time":1677769572847296000}
+2023/03/03 19:32:16 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid errs:Name长度必须至少为3个字符,State必须是[0 1]中的一个","time":1677843136444508000}
