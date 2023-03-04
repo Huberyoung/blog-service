@@ -5,7 +5,7 @@ import (
 )
 
 type Tag struct {
-	Model *Model
+	*Model
 	Name  string `json:"name"`
 	State uint8  `json:"state"`
 }

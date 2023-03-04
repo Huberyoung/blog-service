@@ -118,7 +118,7 @@ func (l *Logger) JsonFormat(level Level, message string) Fields {
 	fields["level"] = level.String()
 	fields["time"] = time.Now().Local().UnixNano()
 	fields["message"] = message
-	fields["callers"] = l.callers
+	//fields["callers"] = l.callers
 	return fields
 }
 

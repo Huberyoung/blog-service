@@ -32,3 +32,11 @@
 2023/03/04 00:04:22 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid errs:[Name长度必须至少为3个字符]","time":1677859462123195000}
 2023/03/04 00:04:53 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid errs:[Name长度必须至少为3个字符]","time":1677859493744924000}
 2023/03/04 00:04:56 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid errs:[Name长度必须至少为3个字符]","time":1677859496735266000}
+2023/03/04 14:43:11 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid errs:Name长度必须至少为3个字符","time":1677912191589976000}
+2023/03/04 14:54:55 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"error","message":"app.BindAndValid errs:Name长度必须至少为3个字符","time":1677912895605822000}
+2023/03/04 14:55:02 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"error","message":"app.CreateTag errs:","time":1677912902974336000}
+2023/03/04 14:55:37 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"error","message":"app.CreateTag errs:","time":1677912937521583000}
+2023/03/04 14:58:46 {"callers":["/Users/huberyyang/Desktop/study/blog-service/main.go: 28 main.init.0"],"level":"error","message":"app.CreateTag errs:","time":1677913126143546000}
+2023/03/04 15:00:06 {"level":"error","message":"app.CreateTag errs:","time":1677913206333603000}
+2023/03/04 15:01:06 {"level":"error","message":"app.CreateTag errs:Error 1054: Unknown column 'delete_on' in 'field list'","time":1677913266005257000}
+2023/03/04 15:11:45 {"level":"error","message":"app.CreateTag errs:Error 1054: Unknown column 'delete_on' in 'field list'","time":1677913905963473000}
