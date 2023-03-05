@@ -2,14 +2,12 @@ package v1
 
 import (
 	"blog-service/global"
-	"blog-service/interbal/model"
 	"blog-service/interbal/service"
 	"blog-service/pkg/app"
 	"blog-service/pkg/convert"
 	"blog-service/pkg/errcode"
 	"github.com/gin-gonic/gin"
 	"log"
-	"net/http"
 )
 
 type Tag struct {
@@ -32,11 +30,24 @@ func NewTage() Tag {
 //	@Failure		500	{object}	errcode.Error	"内部错误"
 //	@Router			/api/v1/tags/:id [get]
 func (t Tag) Get(c *gin.Context) {
-	var tag model.Tag
-	global.DBEngine.First(&tag)
-	log.Printf("record %#v\n", tag)
+	param := service.GetTagRequest{Id: convert.StrTo(c.Param("id")).MustUInt()}
+	response := app.NewResponse(c)
+	valid, errors := app.BindAndValid(c, &param)
+	if !valid {
+		global.Logger.ErrorF("app.BindAndValid errs:%v", errors)
+		response.ToErrorResponseList(errcode.InvalidParams.WithDetails(errors.Errors()...))
+		return
+	}
+	svc := service.New(c.Request.Context())
+	log.Printf("param:%v\n", param)
 
-	c.JSON(http.StatusOK, tag)
+	tag, err := svc.GetTag(&param)
+	if err != nil {
+		global.Logger.ErrorF("svc.ListTag err:%v", err)
+		response.ToErrorResponseList(errcode.ErrorGetTagFail)
+		return
+	}
+	response.ToResponse(tag)
 }
 
 // List godoc

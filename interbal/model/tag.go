@@ -26,6 +26,13 @@ func (t Tag) Count(db *gorm.DB) (int, error) {
 	return count, nil
 }
 
+func (t Tag) Get(db *gorm.DB) (Tag, error) {
+	if err := db.First(&t).Error; err != nil {
+		return Tag{}, err
+	}
+	return t, nil
+}
+
 func (t Tag) List(db *gorm.DB, pageOffset, pageSize int) ([]*Tag, error) {
 	var tags []*Tag
 	var err error

@@ -45,3 +45,12 @@
 2023/03/04 17:57:48 {"level":"error","message":"app.CreateTag errs:Error 1054: Unknown column 'delete_on' in 'field list'","time":1677923868636367000}
 2023/03/05 10:41:06 {"level":"error","message":"app.DeleteTag errs:","time":1677984066738505000}
 2023/03/05 10:41:20 {"level":"error","message":"app.DeleteTag errs:","time":1677984080138190000}
+2023/03/05 13:17:26 {"level":"error","message":"app.BindAndValid errs:Id为必填字段","time":1677993446920421000}
+2023/03/05 13:17:34 {"level":"error","message":"app.BindAndValid errs:Id为必填字段","time":1677993454627303000}
+2023/03/05 13:19:16 {"level":"error","message":"app.BindAndValid errs:Id为必填字段","time":1677993556509678000}
+2023/03/05 13:19:31 {"level":"error","message":"app.BindAndValid errs:Id为必填字段","time":1677993571039632000}
+2023/03/05 13:19:57 {"level":"error","message":"app.BindAndValid errs:Id为必填字段","time":1677993597115189000}
+2023/03/05 13:20:21 {"level":"error","message":"app.BindAndValid errs:Id为必填字段","time":1677993621392660000}
+2023/03/05 13:21:11 {"level":"error","message":"app.BindAndValid errs:Id为必填字段","time":1677993671544210000}
+2023/03/05 13:21:49 {"level":"error","message":"app.BindAndValid errs:Id为必填字段","time":1677993709509866000}
+2023/03/05 13:23:35 {"level":"error","message":"svc.ListTag err:record not found","time":1677993815071543000}

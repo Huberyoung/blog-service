@@ -5,6 +5,11 @@ import (
 	"blog-service/pkg/app"
 )
 
+func (d *Dao) GetTag(id uint) (model.Tag, error) {
+	tag := &model.Tag{Model: &model.Model{ID: id}}
+	return tag.Get(d.engine)
+}
+
 func (d *Dao) CountTag(name string, state uint8) (int, error) {
 	tag := &model.Tag{Name: name, State: state}
 	return tag.Count(d.engine)
