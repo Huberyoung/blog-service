@@ -43,3 +43,5 @@
 2023/03/04 15:28:20 {"level":"error","message":"app.CreateTag errs:Error 1054: Unknown column 'delete_on' in 'field list'","time":1677914900211413000}
 2023/03/04 17:56:55 {"level":"error","message":"app.BindAndValid errs:Name长度必须至少为3个字符","time":1677923815696505000}
 2023/03/04 17:57:48 {"level":"error","message":"app.CreateTag errs:Error 1054: Unknown column 'delete_on' in 'field list'","time":1677923868636367000}
+2023/03/05 10:41:06 {"level":"error","message":"app.DeleteTag errs:","time":1677984066738505000}
+2023/03/05 10:41:20 {"level":"error","message":"app.DeleteTag errs:","time":1677984080138190000}

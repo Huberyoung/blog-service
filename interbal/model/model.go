@@ -69,7 +69,7 @@ func deleteCallBack(scope *gorm.Scope) {
 		}
 
 		var sql string
-		deletedOnField, hasDeletedOnField := scope.FieldByName("DeleteOn")
+		deletedOnField, hasDeletedOnField := scope.FieldByName("DeletedOn")
 		isDelField, hasIsDelField := scope.FieldByName("IsDel")
 		if !scope.Search.Unscoped && hasDeletedOnField && hasIsDelField {
 			sql = fmt.Sprintf("UPDATE %v SET %v=%v,%v=%v%v%v",
