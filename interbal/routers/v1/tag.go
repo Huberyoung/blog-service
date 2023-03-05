@@ -23,7 +23,7 @@ func NewTage() Tag {
 //	@Description	通过id获取单个标签
 //	@Tags			Tag
 //	@Produce		json
-//	@Param			id	path		int				true	"标签ID"
+//	@Param			id	path		uint			true	"标签ID"
 //	@Success		200	{object}	model.Tag		"成功"
 //	@Failure		400	{object}	errcode.Error	"请求错误"
 //	@Failure		404	{object}	errcode.Error	"找不到页面"

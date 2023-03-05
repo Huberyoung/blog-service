@@ -1,13 +1,40 @@
 definitions:
   errcode.Error:
     type: object
+  model.Article:
+    properties:
+      content:
+        type: string
+      cover_image_url:
+        type: string
+      created_by:
+        type: string
+      created_on:
+        type: integer
+      deleted_on:
+        type: integer
+      desc:
+        type: string
+      id:
+        type: integer
+      is_del:
+        type: integer
+      modified_by:
+        type: string
+      modified_on:
+        type: integer
+      state:
+        type: integer
+      title:
+        type: string
+    type: object
   model.Tag:
     properties:
       created_by:
         type: string
       created_on:
         type: integer
-      delete_on:
+      deleted_on:
         type: integer
       id:
         type: integer
@@ -24,14 +51,257 @@ definitions:
     type: object
 info:
   contact:
-    email: support@swagger.io
-    name: API Support
-    url: http://www.swagger.io/support
+    email: huberyoung@163.com
+    name: 博客系统
+    url: https://github.com/Huberyoung/blog-service
   description: 练手项目，博客系统
-  termsOfService: http://swagger.io/terms/
+  termsOfService: https://github.com/Huberyoung/blog-service
   title: GO博客系统
   version: "1.0"
 paths:
+  /api/v1/articles:
+    get:
+      consumes:
+      - application/json
+      description: 通过文章标题，状态，以及分页情况获取文章列表
+      parameters:
+      - description: 文章标题
+        in: query
+        name: title
+        type: string
+      - default: 1
+        description: 文章状态 0 不可用，1可用
+        enum:
+        - 0
+        - 1
+        in: query
+        name: state
+        type: integer
+      - description: 页码
+        in: query
+        name: page
+        type: integer
+      - description: 每页数量
+        in: query
+        name: page_size
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/model.Article'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/errcode.Error'
+      summary: 获取文章列表
+      tags:
+      - Article
+    post:
+      description: 新增文章内容
+      parameters:
+      - description: 文章标题
+        in: formData
+        maxLength: 10
+        minLength: 1
+        name: title
+        required: true
+        type: string
+      - description: 文章简述
+        in: formData
+        maxLength: 100
+        minLength: 3
+        name: desc
+        required: true
+        type: string
+      - description: 文章内容
+        in: formData
+        maxLength: 100
+        minLength: 3
+        name: content
+        required: true
+        type: string
+      - description: 文章图片地址
+        in: formData
+        maxLength: 100
+        minLength: 3
+        name: cover_image_url
+        required: true
+        type: string
+      - default: 1
+        description: 状态
+        enum:
+        - 0
+        - 1
+        in: formData
+        name: state
+        type: integer
+      - description: 创建者
+        in: formData
+        maxLength: 30
+        minLength: 1
+        name: created_by
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/model.Article'
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "404":
+          description: 找不到页面
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "500":
+          description: 内部错误
+          schema:
+            $ref: '#/definitions/errcode.Error'
+      summary: 新增文章
+      tags:
+      - Article
+    put:
+      description: 更新文章内容
+      parameters:
+      - description: 文章标题
+        in: formData
+        maxLength: 10
+        minLength: 1
+        name: title
+        type: string
+      - description: 文章简述
+        in: formData
+        maxLength: 100
+        minLength: 3
+        name: desc
+        type: string
+      - description: 文章内容
+        in: formData
+        maxLength: 100
+        minLength: 3
+        name: content
+        type: string
+      - description: 文章图片地址
+        in: formData
+        maxLength: 100
+        minLength: 3
+        name: cover_image_url
+        type: string
+      - default: 1
+        description: 状态
+        enum:
+        - 0
+        - 1
+        in: formData
+        name: state
+        type: integer
+      - description: 更新者
+        in: formData
+        maxLength: 30
+        minLength: 1
+        name: modified_by
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/model.Article'
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "404":
+          description: 找不到页面
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "500":
+          description: 内部错误
+          schema:
+            $ref: '#/definitions/errcode.Error'
+      summary: 更新文章
+      tags:
+      - Article
+  /api/v1/articles/:id:
+    delete:
+      description: 通过id删除文章
+      parameters:
+      - description: 文章ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/model.Article'
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "404":
+          description: 找不到页面
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "500":
+          description: 内部错误
+          schema:
+            $ref: '#/definitions/errcode.Error'
+      summary: 删除文章
+      tags:
+      - Article
+    get:
+      consumes:
+      - application/json
+      description: 通过唯一编号获取单篇文章
+      parameters:
+      - description: 文章 ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/model.Article'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/errcode.Error'
+      summary: 获取单篇文章
+      tags:
+      - Article
   /api/v1/tags:
     get:
       description: 通过获取多个标签

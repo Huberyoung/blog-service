@@ -33,11 +33,11 @@ func init() {
 //	@title			GO博客系统
 //	@version		1.0
 //	@description	练手项目，博客系统
-//	@termsOfService	http://swagger.io/terms/
+//	@termsOfService	https://github.com/Huberyoung/blog-service
 
-// @contact.name	API Support
-// @contact.url	http://www.swagger.io/support
-// @contact.email	support@swagger.io
+// @contact.name	博客系统
+// @contact.url	https://github.com/Huberyoung/blog-service
+// @contact.email	huberyoung@163.com
 func main() {
 	route := routers.NewRouter()
 	s := &http.Server{
