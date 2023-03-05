@@ -7,7 +7,6 @@ import (
 	"blog-service/pkg/convert"
 	"blog-service/pkg/errcode"
 	"github.com/gin-gonic/gin"
-	"log"
 )
 
 type Tag struct {
@@ -39,7 +38,6 @@ func (t Tag) Get(c *gin.Context) {
 		return
 	}
 	svc := service.New(c.Request.Context())
-	log.Printf("param:%v\n", param)
 
 	tag, err := svc.GetTag(&param)
 	if err != nil {
