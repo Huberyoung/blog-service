@@ -15,6 +15,13 @@ App:
   LogMaxBackups: 1
   LogUseLocalTime: true
   LogCompress: false
+  UploadSavePath: storage/uploads
+  UploadServerUrl: http://127.0.0.1:8080/static
+  UploadImageMaxSize: 5 # MB
+  UploadImageAllowExtList:
+    - .jpg
+    - .jpeg
+    - .png
 Database:
   DBType: mysql
   Username: root

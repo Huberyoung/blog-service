@@ -62,6 +62,7 @@ func setUpSetting() error {
 	if err != nil {
 		return err
 	}
+	global.AppSetting.UploadImageMaxSize *= 1024 * 1024
 
 	err = set.ReadSection("Server", &global.ServerSetting)
 	if err != nil {

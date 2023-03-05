@@ -11,16 +11,20 @@ type ServerS struct {
 }
 
 type AppS struct {
-	DefaultPageSize int
-	MaxPageSize     int
-	LogSavePath     string
-	LogFileName     string
-	LogFileExt      string
-	LogMaxSize      int
-	LogMaxAge       int
-	LogMaxBackups   int
-	LogUseLocalTime bool
-	LogCompress     bool
+	DefaultPageSize         int
+	MaxPageSize             int
+	LogSavePath             string
+	LogFileName             string
+	LogFileExt              string
+	LogMaxSize              int
+	LogMaxAge               int
+	LogMaxBackups           int
+	LogUseLocalTime         bool
+	LogCompress             bool
+	UploadSavePath          string
+	UploadServerUrl         string
+	UploadImageMaxSize      int
+	UploadImageAllowExtList []string
 }
 
 type DatabaseS struct {
