@@ -30,11 +30,12 @@ func init() {
 	}
 }
 
-//	@title			GO博客系统
-//	@version		1.0
-//	@description	练手项目，博客系统
-//	@termsOfService	https://github.com/Huberyoung/blog-service
-
+// @title			GO博客系统
+// @version		1.0
+// @description	练手项目，博客系统
+// @termsOfService	https://github.com/Huberyoung/blog-service
+// @host			localhost:8080
+// @BasePath		/api/v1
 // @contact.name	博客系统
 // @contact.url	https://github.com/Huberyoung/blog-service
 // @contact.email	huberyoung@163.com

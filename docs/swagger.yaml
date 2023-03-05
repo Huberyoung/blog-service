@@ -1,3 +1,4 @@
+basePath: /api/v1
 definitions:
   errcode.Error:
     type: object
@@ -49,6 +50,7 @@ definitions:
       state:
         type: integer
     type: object
+host: localhost:8080
 info:
   contact:
     email: huberyoung@163.com
