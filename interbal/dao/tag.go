@@ -27,9 +27,12 @@ func (d *Dao) UpdateTag(id uint, name string, state uint8, modifiedBy string) er
 	}
 
 	values := map[string]any{
-		"name":        name,
 		"state":       state,
 		"modified_by": modifiedBy,
+	}
+
+	if name != "" {
+		values["name"] = name
 	}
 	return tag.Update(d.engine, values)
 }
