@@ -25,10 +25,10 @@ type CreateArticleRequest struct {
 
 type UpdateArticleRequest struct {
 	ID            uint   `form:"id" binding:"required,gte=1"`
-	Title         string `form:"title" binding:"min=1,max=10"`
-	Desc          string `form:"desc" binding:"min=3,max=100"`
-	Content       string `form:"content" binding:"min=3,max=10000"`
-	CoverImageUrl string `form:"cover_image_url" binding:"min=3,max=100"`
+	Title         string `form:"title" binding:"max=10"`
+	Desc          string `form:"desc" binding:"max=100"`
+	Content       string `form:"content" binding:"max=10000"`
+	CoverImageUrl string `form:"cover_image_url" binding:"max=100"`
 	State         uint8  `form:"state,default=1" binding:"oneof=0 1"`
 	ModifiedBy    string `form:"modified_by" binding:"required,min=1,max=100"`
 }
@@ -50,7 +50,7 @@ func (srv *Service) ListArticle(request *ListArticleRequest, pager *app.Pager) (
 }
 
 func (srv *Service) CreateArticle(request *CreateArticleRequest) error {
-	return srv.dao.CreateArticle(request.Title, request.State, request.CreatedBy)
+	return srv.dao.CreateArticle(request.Title, request.Desc, request.Content, request.CoverImageUrl, request.State, request.CreatedBy)
 }
 
 func (srv *Service) UpdateArticle(request *UpdateArticleRequest) error {

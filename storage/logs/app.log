@@ -54,3 +54,13 @@
 2023/03/05 13:21:11 {"level":"error","message":"app.BindAndValid errs:Id为必填字段","time":1677993671544210000}
 2023/03/05 13:21:49 {"level":"error","message":"app.BindAndValid errs:Id为必填字段","time":1677993709509866000}
 2023/03/05 13:23:35 {"level":"error","message":"svc.ListTag err:record not found","time":1677993815071543000}
+2023/03/05 18:46:44 {"level":"error","message":"app.BindAndValid errs:State必须是[0 1]中的一个","time":1678013204663297000}
+2023/03/05 18:46:51 {"level":"error","message":"svc.CountArticle err:Error 1054: Unknown column 'id_del' in 'where clause'","time":1678013211273843000}
+2023/03/05 18:52:41 {"level":"error","message":"app.BindAndValid errs:Content长度必须至少为3个字符","time":1678013561176556000}
+2023/03/05 18:56:24 {"level":"error","message":"app.BindAndValid errs:[ModifiedBy为必填字段]","time":1678013784630597000}
+2023/03/05 18:57:12 {"level":"error","message":"app.BindAndValid errs:[CoverImageUrl长度必须至少为3个字符]","time":1678013832639011000}
+2023/03/05 18:58:16 {"level":"error","message":"app.BindAndValid errs:[ModifiedBy为必填字段]","time":1678013896203446000}
+2023/03/05 19:01:08 {"level":"error","message":"svc.CountArticle err:Error 1054: Unknown column 'id_del' in 'where clause'","time":1678014068014795000}
+2023/03/05 19:03:31 {"level":"error","message":"svc.ListArticle err:Error 1054: Unknown column 'id_del' in 'where clause'","time":1678014211254888000}
+2023/03/05 19:03:49 {"level":"error","message":"svc.ListArticle err:Error 1054: Unknown column 'id_del' in 'where clause'","time":1678014229093450000}
+2023/03/05 19:04:00 {"level":"error","message":"svc.ListArticle err:Error 1054: Unknown column 'id_del' in 'where clause'","time":1678014240095217000}

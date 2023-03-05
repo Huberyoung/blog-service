@@ -21,8 +21,17 @@ func (d *Dao) GetArticleList(title string, state uint8, page, pageSize int) ([]*
 	return Article.List(d.engine, pageOffset, pageSize)
 }
 
-func (d *Dao) CreateArticle(title string, state uint8, createdBy string) error {
-	Article := &model.Article{Model: &model.Model{CreatedBy: createdBy}, Title: title, State: state}
+func (d *Dao) CreateArticle(title, desc, content, coverImageUrl string, state uint8, createdBy string) error {
+	Article := &model.Article{
+		Model: &model.Model{
+			CreatedBy: createdBy,
+		},
+		Title:         title,
+		Desc:          desc,
+		CoverImageUrl: coverImageUrl,
+		Content:       content,
+		State:         state,
+	}
 	return Article.Create(d.engine)
 }
 

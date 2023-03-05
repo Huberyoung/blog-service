@@ -29,7 +29,7 @@ func (a Article) Count(db *gorm.DB) (int, error) {
 	db = db.Where("state = ?", a.State)
 
 	var count int
-	if err := db.Model(&a).Where("id_del = ?", 0).Count(&count).Error; err != nil {
+	if err := db.Model(&a).Where("is_del = ?", 0).Count(&count).Error; err != nil {
 		return count, err
 	}
 	return count, nil
@@ -46,7 +46,7 @@ func (a Article) List(db *gorm.DB, pageOffset, pageSize int) ([]*Article, error)
 		db = db.Where("title = ?", a.Title)
 	}
 	db = db.Where("state = ?", a.State)
-	err = db.Model(&a).Where("id_del = ?", 0).Find(&articles).Error
+	err = db.Model(&a).Where("is_del = ?", 0).Find(&articles).Error
 	return articles, err
 }
 
