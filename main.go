@@ -82,6 +82,11 @@ func setUpSetting() error {
 		return err
 	}
 	global.JwtSetting.Expire *= time.Second
+
+	err = set.ReadSection("Email", &global.EmailSetting)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 

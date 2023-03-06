@@ -45,3 +45,13 @@ type JwtS struct {
 	Issuer string
 	Expire time.Duration
 }
+
+type EmailS struct {
+	Host     string
+	Port     int
+	UserName string
+	Password string
+	IsSSL    bool
+	From     string
+	To       []string
+}

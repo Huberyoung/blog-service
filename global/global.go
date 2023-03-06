@@ -13,4 +13,5 @@ var (
 	DBEngine        *gorm.DB
 	Logger          *logger.Logger
 	JwtSetting      *setting.JwtS
+	EmailSetting    *setting.EmailS
 )

@@ -37,3 +37,14 @@ JWT:
   Secret: Practice_project_password
   Issuer: blog-service
   Expire: 7200
+Email:
+  Host: smtp.qq.com
+  Port: 465
+  UserName: 286652723@qq.com
+  Password: 13242
+  IsSSL: true
+  From: 286652723@qq.com
+  To:
+    - 359171608@qq.com
+    - huberyoung@163.com
+
