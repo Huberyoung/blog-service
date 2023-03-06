@@ -76,6 +76,12 @@ func setUpSetting() error {
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
 	global.ServerSetting.MaxHeaderBytes = 1 << global.ServerSetting.MaxHeaderBytes
+
+	err = set.ReadSection("JWT", &global.JwtSetting)
+	if err != nil {
+		return err
+	}
+	global.JwtSetting.Expire *= time.Second
 	return nil
 }
 

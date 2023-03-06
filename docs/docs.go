@@ -211,7 +211,7 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "maxLength": 100,
+                        "maxLength": 10000,
                         "minLength": 3,
                         "type": "string",
                         "description": "文章内容",
@@ -686,6 +686,64 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/user": {
+            "post": {
+                "description": "通过账号名称和密码获得token",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "获取账号的token",
+                "parameters": [
+                    {
+                        "maxLength": 10,
+                        "minLength": 1,
+                        "type": "string",
+                        "description": "账号昵称",
+                        "name": "username",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "maxLength": 100,
+                        "minLength": 3,
+                        "type": "string",
+                        "description": "账号密码",
+                        "name": "password",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetUser"
+                        }
+                    },
+                    "400": {
+                        "description": "请求错误",
+                        "schema": {
+                            "$ref": "#/definitions/errcode.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "找不到页面",
+                        "schema": {
+                            "$ref": "#/definitions/errcode.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "内部错误",
+                        "schema": {
+                            "$ref": "#/definitions/errcode.Error"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -729,6 +787,14 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetUser": {
+            "type": "object",
+            "properties": {
+                "token": {
                     "type": "string"
                 }
             }

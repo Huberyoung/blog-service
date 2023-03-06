@@ -16,6 +16,9 @@ func NewRouter() *gin.Engine {
 	r := gin.Default()
 	r.Use(middleware.Translations())
 
+	user := v1.NewUser()
+	r.POST("/user", user.Get)
+
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	tag := v1.NewTage()
 	article := v1.NewArticle()

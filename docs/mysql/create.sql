@@ -44,7 +44,7 @@ CREATE TABLE `blog_article`
 CREATE TABLE `blog_article_tag`
 (
     `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
-    
+
     `article_id`  int(11)          NOT NULL COMMENT '文章 ID',
     `tag_id`      int(11)          NOT NULL COMMENT '标签 ID',
 
@@ -57,3 +57,20 @@ CREATE TABLE `blog_article_tag`
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4 COMMENT ='标签管理';
+
+CREATE TABLE `blog_user`
+(
+    `id`          int(10) unsigned NOT NULL AUTO_INCREMENT,
+
+    `username`    varchar(11)      NOT NULL COMMENT '用户名',
+    `password`    varchar(300)     NOT NULL COMMENT '密码',
+
+    `created_on`  int(10) unsigned    DEFAULT '0' COMMENT '创建时间',
+    `created_by`  varchar(100)        DEFAULT '' COMMENT '创建人',
+    `modified_on` int(10) unsigned    DEFAULT '0' COMMENT '修改时间',
+    `modified_by` varchar(100)        DEFAULT '' COMMENT '修改人',
+    `deleted_on`  int(10) unsigned    DEFAULT '0' COMMENT '删除时间',
+    `is_del`      tinyint(3) unsigned DEFAULT '0' COMMENT '是否删除 0 为未删除、1 为已删除',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4 COMMENT ='用户管理';

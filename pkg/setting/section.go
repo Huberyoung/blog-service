@@ -39,3 +39,9 @@ type DatabaseS struct {
 	MaxIdleConnection int
 	MaxOpenConnection int
 }
+
+type JwtS struct {
+	Secret string
+	Issuer string
+	Expire time.Duration
+}

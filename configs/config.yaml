@@ -33,3 +33,7 @@ Database:
   ParseTime: True
   MaxIdleConnection: 10
   MaxOpenConnection: 30
+JWT:
+  Secret: Practice_project_password
+  Issuer: blog-service
+  Expire: 7200

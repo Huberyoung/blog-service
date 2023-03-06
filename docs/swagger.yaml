@@ -29,6 +29,11 @@ definitions:
       title:
         type: string
     type: object
+  model.GetUser:
+    properties:
+      token:
+        type: string
+    type: object
   model.Tag:
     properties:
       created_by:
@@ -128,7 +133,7 @@ paths:
         type: string
       - description: 文章内容
         in: formData
-        maxLength: 100
+        maxLength: 10000
         minLength: 3
         name: content
         required: true
@@ -517,4 +522,44 @@ paths:
       summary: 获取多个标签
       tags:
       - Tag
+  /user:
+    post:
+      description: 通过账号名称和密码获得token
+      parameters:
+      - description: 账号昵称
+        in: formData
+        maxLength: 10
+        minLength: 1
+        name: username
+        required: true
+        type: string
+      - description: 账号密码
+        in: formData
+        maxLength: 100
+        minLength: 3
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/model.GetUser'
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "404":
+          description: 找不到页面
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "500":
+          description: 内部错误
+          schema:
+            $ref: '#/definitions/errcode.Error'
+      summary: 获取账号的token
+      tags:
+      - User
 swagger: "2.0"
