@@ -28,6 +28,7 @@ func NewRouter() *gin.Engine {
 	r.StaticFS("/static", http.Dir(global.AppSetting.UploadSavePath))
 
 	apiV1 := r.Group("/api/v1")
+	apiV1.Use(middleware.JWT())
 	{
 		apiV1.POST("/tags", tag.Create)
 		apiV1.DELETE("/tags/:id", tag.Delete)
