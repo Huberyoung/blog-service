@@ -1,6 +1,7 @@
 package main
 
 import (
+	"blog-service/pkg/email"
 	"blog-service/pkg/logger"
 	"fmt"
 	"gopkg.in/natefinch/lumberjack.v2"
@@ -40,6 +41,8 @@ func init() {
 // @contact.url	https://github.com/Huberyoung/blog-service
 // @contact.email	huberyoung@163.com
 func main() {
+	test()
+
 	route := routers.NewRouter()
 	s := &http.Server{
 		Addr:              ":" + global.ServerSetting.HttpPort,
@@ -108,4 +111,19 @@ func setUpLogger() error {
 	}
 	global.Logger = logger.NewLogger(writer, "", log.LstdFlags).CloneWithCaller(2)
 	return nil
+}
+
+func test() {
+	failMailer := email.NewEmail(&email.SMTPInfo{
+		Host:     global.EmailSetting.Host,
+		Port:     global.EmailSetting.Port,
+		IsSSL:    global.EmailSetting.IsSSL,
+		UserName: global.EmailSetting.UserName,
+		Password: global.EmailSetting.Password,
+		From:     global.EmailSetting.From,
+	})
+
+	for i := 0; i < 1000; i++ {
+		_ = failMailer.SendMail(global.EmailSetting.To, "爱你哦爱你哦，爱你哦", "就是爱你爱你爱你～")
+	}
 }
