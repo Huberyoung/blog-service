@@ -63,6 +63,7 @@ func setUpSetting() error {
 		return err
 	}
 	global.AppSetting.UploadImageMaxSize *= 1024 * 1024
+	global.AppSetting.DefaultContextTimeout *= time.Second
 
 	err = set.ReadSection("Server", &global.ServerSetting)
 	if err != nil {

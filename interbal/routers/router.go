@@ -5,15 +5,28 @@ import (
 	"blog-service/global"
 	"blog-service/interbal/middleware"
 	v1 "blog-service/interbal/routers/v1"
+	"blog-service/pkg/limiter"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
 
 func NewRouter() *gin.Engine {
-	r := gin.Default()
+	r := gin.New()
+
+	r.Use(middleware.AccessLog())
+	r.Use(middleware.Recovery())
+	methodLimiters := limiter.NewMethodLimiter().AddBuckets(limiter.LimiterBucketRule{
+		Key:          "/user",
+		FillInterval: time.Second,
+		Capacity:     10,
+		Quantum:      10,
+	})
+	r.Use(middleware.RateLimiter(methodLimiters))
+	r.Use(middleware.ContextTimeout(global.AppSetting.DefaultContextTimeout))
 	r.Use(middleware.Translations())
 
 	user := v1.NewUser()

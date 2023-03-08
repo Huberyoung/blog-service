@@ -24,6 +24,7 @@ type AppS struct {
 	UploadSavePath          string
 	UploadServerUrl         string
 	UploadImageMaxSize      int
+	DefaultContextTimeout   time.Duration
 	UploadImageAllowExtList []string
 }
 
