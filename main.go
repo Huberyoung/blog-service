@@ -68,7 +68,7 @@ func main() {
 	quit := make(chan os.Signal)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
-	log.Println("Shuting down server ...")
+	log.Println("Shutting down server ...")
 
 	timeout, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
