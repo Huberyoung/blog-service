@@ -4,6 +4,7 @@ import (
 	"blog-service/global"
 	"blog-service/pkg/setting"
 	"fmt"
+	otgorm "github.com/eddycjy/opentracing-gorm"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 	"time"
@@ -39,6 +40,8 @@ func NewDbEngine(ds *setting.DatabaseS) (*gorm.DB, error) {
 
 	db.DB().SetMaxIdleConns(ds.MaxIdleConnection)
 	db.DB().SetMaxOpenConns(ds.MaxOpenConnection)
+
+	otgorm.AddGormCallbacks(db)
 	return db, nil
 }
 
