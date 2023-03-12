@@ -28,7 +28,8 @@ func NewRouter() *gin.Engine {
 	r.Use(middleware.RateLimiter(methodLimiters))
 	r.Use(middleware.ContextTimeout(global.AppSetting.DefaultContextTimeout))
 	r.Use(middleware.Translations())
-
+	r.Use(middleware.Tracing())
+	
 	user := v1.NewUser()
 	r.POST("/user", user.Get)
 

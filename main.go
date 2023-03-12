@@ -2,6 +2,7 @@ package main
 
 import (
 	"blog-service/pkg/logger"
+	"blog-service/pkg/tracer"
 	"fmt"
 	"gopkg.in/natefinch/lumberjack.v2"
 	"log"
@@ -27,6 +28,10 @@ func init() {
 
 	if err := setUpLogger(); err != nil {
 		log.Fatalf("init.setUpLogger err:%v\n", err)
+	}
+
+	if err := setUpTracing(); err != nil {
+		log.Fatalf("init.setUpTracing err:%v\n", err)
 	}
 }
 
@@ -107,5 +112,15 @@ func setUpLogger() error {
 		Compress:   global.AppSetting.LogCompress,
 	}
 	global.Logger = logger.NewLogger(writer, "", log.LstdFlags).CloneWithCaller(2)
+	return nil
+}
+
+func setUpTracing() error {
+	jaegerTracer, _, err := tracer.NewJaegerTracer("blog-service", "127.0.0.1:6831")
+	if err != nil {
+		return err
+	}
+
+	global.Tracer = jaegerTracer
 	return nil
 }

@@ -4,6 +4,7 @@ import (
 	"blog-service/pkg/logger"
 	"blog-service/pkg/setting"
 	"github.com/jinzhu/gorm"
+	"github.com/opentracing/opentracing-go"
 )
 
 var (
@@ -14,4 +15,5 @@ var (
 	Logger          *logger.Logger
 	JwtSetting      *setting.JwtS
 	EmailSetting    *setting.EmailS
+	Tracer          opentracing.Tracer
 )
