@@ -17,7 +17,7 @@ func (u User) TableName() string {
 }
 
 func (u User) Get(db *gorm.DB) (User, error) {
-	if err := db.First(&u).Error; err != nil {
+	if err := db.Where("username = ? and password = ?", u.Username, u.Password).First(&u).Error; err != nil {
 		return User{}, err
 	}
 	return u, nil
