@@ -41,7 +41,7 @@ func (t Tag) List(db *gorm.DB, pageOffset, pageSize int) ([]*Tag, error) {
 	}
 
 	if t.Name != "" {
-		db.Where("name = ?", t.Name)
+		db = db.Where("name = ?", t.Name)
 	}
 	db = db.Where("state = ?", t.State)
 	if err = db.Model(&t).Where("is_del = ?", 0).Find(&tags).Error; err != nil {
